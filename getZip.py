@@ -6,4 +6,4 @@ def getZip(boro):
     df = pd.read_csv("./NYC-vehicle-collisions.csv")
     myBoro = df.loc[(df["BOROUGH"] == boro)]
     deadZip = int(myBoro["ZIP CODE"].value_counts().idxmax())
-    return zip
+    return deadZip
