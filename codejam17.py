@@ -15,7 +15,7 @@ bottomFrame = Frame(root)
 bottomFrame.pack(side=BOTTOM)
 
 
-def button_pressed(borough):
+def boro_pressed(borough):
 
     label = Label(root, text=rsp.getBoro(borough))
     label.grid(row = 1, sticky=W+E)
@@ -30,15 +30,21 @@ def button_pressed(borough):
     place_holder = Label(root)
     place_holder.grid(row=0, column = 0)
 
-button1 = Button(topFrame, text ='BROOKLYN', command = lambda: button_pressed('BROOKLYN'))
-button2 = Button(topFrame, text = 'QUEENS', command = lambda: button_pressed('QUEENS'))
-button3 = Button(topFrame, text = 'BR   ONX',command = lambda: button_pressed('BRONX'))
-button4 = Button(topFrame, text = 'MANHATTAN',command = lambda: button_pressed ('MANHATTAN'))
-button5 = Button(topFrame, text = 'STATEN ISLAND',command = lambda: button_pressed ('STATEN ISLAND'))
+def go_pressed(zc):
+	nH = rsp.getNeighborhood(int(zc))
+	zcnH = 'your zip code ' + zc + ' is ' + nH
+	label_nH = Label(root, text=nH)
+	label_nH.grid(row = 4, sticky = S + W + E)
+
+button1 = Button(topFrame, text ='BROOKLYN', command = lambda: boro_pressed('BROOKLYN'))
+button2 = Button(topFrame, text = 'QUEENS', command = lambda: boro_pressed('QUEENS'))
+button3 = Button(topFrame, text = 'BR   ONX',command = lambda: boro_pressed('BRONX'))
+button4 = Button(topFrame, text = 'MANHATTAN',command = lambda: boro_pressed ('MANHATTAN'))
+button5 = Button(topFrame, text = 'STATEN ISLAND',command = lambda: boro_pressed ('STATEN ISLAND'))
 
 label_1=Label(bottomFrame, text = "Where do you live? Insert a zipcode.")
 entry_1 =Entry(bottomFrame)
-button6 = Button(bottomFrame, text ='GO')
+button6 = Button(bottomFrame, text ='GO', command = lambda: go_pressed(entry_1.get()))
 
 button1.grid(row = 0, column = 0)
 button2.grid(row = 0, column = 1)
