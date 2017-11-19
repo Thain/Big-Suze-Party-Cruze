@@ -6,7 +6,7 @@ import Response as rsp
 
 root = Tk()
 
-topFrame = Frame(root, width = 1000, height=1000)
+topFrame = Frame(root, width = 1100, height=1000)
 topFrame.pack()
 bottomFrame = Frame(root)
 bottomFrame.pack(side=BOTTOM)
