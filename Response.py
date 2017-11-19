@@ -1,6 +1,6 @@
 import pandas as pd
 
-	df = pd.read_csv("./NYC-vehicle-collisions.csv")
+df = pd.read_csv("./NYC-vehicle-collisions.csv")
 
 def getBoro(boro):
 	maxZip = getMax('BOROUGH', boro)
