@@ -6,7 +6,7 @@ import Response as rsp
 
 root = Tk()
 
-topFrame = Frame(root, width = 1100, height=1000)
+topFrame = Frame(root, width = 1100, height=1200)
 topFrame.pack()
 bottomFrame = Frame(root)
 bottomFrame.pack(side=BOTTOM)
@@ -22,7 +22,7 @@ def button_pressed(borough):
     label_img.image = render
     label_img.place(x=0, y=100)
 
-    label = Label(root, text=rsp.getResponse(borough))
+    label = Label(root, text=rsp.getBoro(borough))
     label.pack(side=TOP)
 
 button1 = Button(topFrame, text ='BROOKLYN', command = lambda: button_pressed('BROOKLYN'))
