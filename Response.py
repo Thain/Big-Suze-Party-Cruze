@@ -1,19 +1,31 @@
 import pandas as pd
 
-def getResponse(boro):
-	pt1 = getZip(boro)
-	str1 = 'and the most accident prone zip code in your borough is ' + str(pt1)
-	pt2 = getNeighborhood(pt1)
-	str2 = 'The most accident prone neighborhood in your borough is ' + str(pt2)
-	whole = str2 + '\n' + str1
+	df = pd.read_csv("./NYC-vehicle-collisions.csv")
+
+def getBoro(boro):
+	maxZip = getMax('BOROUGH', boro)
+	maxNH = getNeighborhood(maxZip)
+	max_str1 = 'and the most accident prone zip code in your borough is ' + str(maxZip)
+	max_str2 = 'The most accident prone neighborhood in your borough is ' + str(maxNH)
+	
+	minZip = getMin('BOROUGH', boro)
+	minNH = getNeighborhood(minZip)
+	min_str1 = 'and the least accident prone zip code in your borough is ' + str(minZip)
+	min_str2 = 'The least accident prone neighborhood in your borough is ' + str(minNH)
+	
+	whole = max_str2 + '\n' + max_str1 + '\n' + min_str2 + '\n' + min_str1
 	return whole
 
-def getZip(boro):
-	df = pd.read_csv("./NYC-vehicle-collisions.csv")
-	myBoro = df.loc[(df["BOROUGH"] == boro)]
-	deadZip = int(myBoro["ZIP CODE"].value_counts().idxmax())
-	return deadZip
-	
+def getMax(intype, in):
+	myBoro = df.loc[(df[intype] == in)]
+	maxZip = int(myBoro["ZIP CODE"].value_counts().idxmax())
+	return maxZip
+
+def getMin(intype, in):
+	myBoro = df.loc[(df[intype] == in)]
+	minZip = int(myBoro["ZIP CODE"].value_counts().idxmin())
+	return minZip	
+		
 def getNeighborhood(zc):
 	zipdf = pd.read_csv("./NYC-ZIP-NEIGHBORHOODS.csv")
 	zipdict = zipdf.set_index('ZIP CODES')['NEIGHBORHOOD'].to_dict()
