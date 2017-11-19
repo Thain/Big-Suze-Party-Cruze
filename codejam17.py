@@ -32,9 +32,11 @@ def boro_pressed(borough):
 
 def go_pressed(zc):
 	nH = rsp.getNeighborhood(int(zc))
-	zcnH = 'your zip code ' + zc + ' is ' + nH
-	label_nH = Label(root, text=nH)
-	label_nH.grid(row = 4, sticky = S + W + E)
+	cas = rsp.getCasualties(int(zc))
+	zcnH = 'your zip code ' + zc + ' is ' + nH + ' and has had ' + str(cas) + ' casualties in the period of January 2015 to February 2017.'
+	print(zcnH)
+	#label_nH = Label(root, text=nH)
+	#label_nH.grid(row = 4, sticky = S + W + E)
 
 button1 = Button(topFrame, text ='BROOKLYN', command = lambda: boro_pressed('BROOKLYN'))
 button2 = Button(topFrame, text = 'QUEENS', command = lambda: boro_pressed('QUEENS'))

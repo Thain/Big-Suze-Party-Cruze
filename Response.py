@@ -34,3 +34,9 @@ def getNeighborhood(zc):
 	except KeyError:
 		deadNH = 'not found in our dictionary'
 	return deadNH
+def getCasualties(zc):
+	zipcas = df.loc[(df['ZIP CODE'] == zc)]
+	casualties = zipcas['PERSONS INJURED'].sum()
+	casualties += zipcas['PERSONS KILLED'].sum()
+	return casualties
+	
