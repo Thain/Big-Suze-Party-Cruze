@@ -21,7 +21,7 @@ renderM = ImageTk.PhotoImage(loadM)
 label_meme = Label(topMeme, image=renderM)
 label_meme.image = renderM
 label_meme.pack()
-dis = Button(topMeme, text="Dismiss", padx=3, pady=1, command=topMeme.destroy)
+dis = Button(topMeme, text="End her career", padx=3, pady=1, command=topMeme.destroy)
 dis.pack()
 
 def boro_pressed(borough):
