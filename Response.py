@@ -16,13 +16,13 @@ def getBoro(boro):
 	whole = max_str2 + '\n' + max_str1 + '\n' + min_str2 + '\n' + min_str1
 	return whole
 
-def getMax(intype, in):
-	myBoro = df.loc[(df[intype] == in)]
+def getMax(intype, inthing):
+	myBoro = df.loc[(df[intype] == inthing)]
 	maxZip = int(myBoro["ZIP CODE"].value_counts().idxmax())
 	return maxZip
 
-def getMin(intype, in):
-	myBoro = df.loc[(df[intype] == in)]
+def getMin(intype, inthing):
+	myBoro = df.loc[(df[intype] == inthing)]
 	minZip = int(myBoro["ZIP CODE"].value_counts().idxmin())
 	return minZip	
 		
